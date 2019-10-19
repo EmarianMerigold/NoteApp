@@ -21,7 +21,7 @@ namespace NoteApp
         {
             Title = title;
             Text = text;
-            Category = category;
+            category = _category;
             Created = created;
             Modified = modified;
         }
@@ -51,25 +51,21 @@ namespace NoteApp
             {
                 return _text;
             }
-
-        }
-
-        public DateTime Created
-        {
-            get
+            set
             {
-                return _created;
+                if (value.Length > 1000)
+                {
+                    throw new ArgumentException("Ошибка. Можно не больше 1000 символов!");
+                }
+                _title = value;
             }
         }
 
-        public DateTime Modified
-        {
-            get
-            { 
-                return _modified;
-            }
-          
-        }
+        public DateTime Created { get; set; }
+        
+
+        public DateTime Modified { get; set; }
+        
 
 
     }
