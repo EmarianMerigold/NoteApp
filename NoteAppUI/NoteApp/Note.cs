@@ -27,7 +27,9 @@ namespace NoteApp
         }
 
 
-
+        /// <summary>
+        /// Возвращает и задаёт заголовок.
+        /// </summary>
         public string Title
         {
             get
@@ -45,6 +47,9 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Возвращает и задаёт текст.
+        /// </summary>
         public string Text
         {
             get
@@ -61,9 +66,14 @@ namespace NoteApp
             }
         }
 
+        /// <summary>
+        /// Метод, отвечающий за время создания заметки.
+        /// </summary>
         public DateTime Created { get; set; }
-        
 
+        /// <summary>
+        /// Метод, отвечающий за время изменения заметки.
+        /// </summary>
         public DateTime Modified { get; set; }
         
 
