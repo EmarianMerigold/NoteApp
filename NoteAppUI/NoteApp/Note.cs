@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace NoteApp
 {
     /// <summary>
-    /// 
+    /// Класс, содержащий в себе поля для заметок.
     /// </summary>
     public class Note
     {
