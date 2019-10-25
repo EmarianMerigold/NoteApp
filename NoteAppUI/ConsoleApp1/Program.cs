@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using System.IO;
+using NoteApp;
 
 namespace ConsoleApp
 {
@@ -12,18 +7,18 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Note note = new Note("Title", "text", Category.Finance, DateTime.Now, DateTime.Now);
-            Note note2;
+            // создали один блокнот
+            Note note1 = new Note("Title", "text", Category.Finance, DateTime.Now, DateTime.Now);
+            
+            // создали еще один блокнот
+            //Note note2 = new Note("Другой Title", "text", Category.Home, DateTime.Now, DateTime.Now);
 
-            ProjectManager.SaveToFile(note, @"c:\test.txt");
+            // создали библитеку блокнотов
+            Project project1 = new Project();
+            // добавили в библиотеку note1
+            project1.dictionary.Add(1, note1);
 
-            note2 = ProjectManager.LoadFromFile(@"c:\test.txt");
-
-            Project.dict = new Project();
-            dict.dictionary.Add(1, note);
-
-            Console.Writeline(note2.Title + note2.Created);
-            Console.ReadKey();
+            ProjectManager.SaveToFile(project1, @"c:\text.txt");
         }
     }
 }

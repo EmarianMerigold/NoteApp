@@ -9,8 +9,8 @@ namespace NoteApp
     /// <summary>
     /// Класс, содержащий в себе стуктуру данных "Словарь".
     /// </summary>
-    class Project
+    public class Project
     {
-        Dictionary<int, Note> dictionary = new Dictionary<int, Note>();
+       public Dictionary<int, Note> dictionary = new Dictionary<int, Note>();
     }
 }

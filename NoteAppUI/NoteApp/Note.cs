@@ -62,7 +62,7 @@ namespace NoteApp
                 {
                     throw new ArgumentException("Ошибка. Можно не больше 1000 символов!");
                 }
-                _title = value;
+                _text = value;
             }
         }
 
