@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoteApp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,12 @@ namespace NoteAppUI
 {
     public partial class Form1 : Form
     {
+        private Project _project = new Project();
+
         public Form1()
         {
             InitializeComponent();
+        
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,6 +34,23 @@ namespace NoteAppUI
         private void ModifiedButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListBox.SelectedIndex != -1)
+            {
+                NoteTextBox.Text = _project.Notes[ListBox.SelectedIndex].Text;
+            }
+        }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            var note = new Note(DateTime.Now.ToString(), DateTime.Now.ToString(), Category.Documents, DateTime.Now, DateTime.Now);
+            var notesCount = _project.Notes.Count;
+            _project.Notes.Add(notesCount, note);
+
+            ListBox.Items.Add(note.Title);
         }
     }
 }

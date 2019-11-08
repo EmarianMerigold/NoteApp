@@ -35,6 +35,7 @@
             this.CreateButton = new System.Windows.Forms.Button();
             this.ModifiedButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
+            this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CategoryComboBox
@@ -52,6 +53,7 @@
             this.ListBox.Name = "ListBox";
             this.ListBox.Size = new System.Drawing.Size(226, 368);
             this.ListBox.TabIndex = 1;
+            this.ListBox.SelectedIndexChanged += new System.EventHandler(this.ListBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -71,6 +73,7 @@
             this.CreateButton.Size = new System.Drawing.Size(24, 24);
             this.CreateButton.TabIndex = 3;
             this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // ModifiedButton
             // 
@@ -91,11 +94,21 @@
             this.RemoveButton.TabIndex = 5;
             this.RemoveButton.UseVisualStyleBackColor = true;
             // 
+            // NoteTextBox
+            // 
+            this.NoteTextBox.Location = new System.Drawing.Point(266, 37);
+            this.NoteTextBox.Multiline = true;
+            this.NoteTextBox.Name = "NoteTextBox";
+            this.NoteTextBox.ReadOnly = true;
+            this.NoteTextBox.Size = new System.Drawing.Size(522, 395);
+            this.NoteTextBox.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.NoteTextBox);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.ModifiedButton);
             this.Controls.Add(this.CreateButton);
@@ -119,6 +132,7 @@
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.Button ModifiedButton;
         private System.Windows.Forms.Button RemoveButton;
+        private System.Windows.Forms.TextBox NoteTextBox;
     }
 }
 

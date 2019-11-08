@@ -11,12 +11,23 @@ namespace NoteApp
     /// </summary>
     public class Note
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private Category _category;
         private string _title;
         private string _text = "Текст";
         private DateTime _created = DateTime.Now;
         private DateTime _modified = DateTime.Now;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="text"></param>
+        /// <param name="category"></param>
+        /// <param name="created"></param>
+        /// <param name="modified"></param>
         public Note(string title, string text, Category category, DateTime created, DateTime modified)
         {
             Title = title;
@@ -75,8 +86,5 @@ namespace NoteApp
         /// Метод, отвечающий за время изменения заметки.
         /// </summary>
         public DateTime Modified { get; set; }
-        
-
-
     }
 }

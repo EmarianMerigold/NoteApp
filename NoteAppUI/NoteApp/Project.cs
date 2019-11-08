@@ -11,6 +11,6 @@ namespace NoteApp
     /// </summary>
     public class Project
     {
-       public Dictionary<int, Note> dictionary = new Dictionary<int, Note>();
+       public Dictionary<int, Note> Notes = new Dictionary<int, Note>();
     }
 }
