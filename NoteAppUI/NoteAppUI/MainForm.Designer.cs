@@ -1,6 +1,6 @@
 ﻿namespace NoteAppUI
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.ListBox = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.Label1 = new System.Windows.Forms.Label();
             this.CreateButton = new System.Windows.Forms.Button();
             this.ModifiedButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
@@ -45,6 +45,7 @@
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(144, 21);
             this.CategoryComboBox.TabIndex = 0;
+            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // ListBox
             // 
@@ -55,15 +56,15 @@
             this.ListBox.TabIndex = 1;
             this.ListBox.SelectedIndexChanged += new System.EventHandler(this.ListBox_SelectedIndexChanged);
             // 
-            // label1
+            // Label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(31, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Show Category";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.Label1.AutoSize = true;
+            this.Label1.Location = new System.Drawing.Point(31, 40);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(79, 13);
+            this.Label1.TabIndex = 2;
+            this.Label1.Text = "Show Category";
+            this.Label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // CreateButton
             // 
@@ -102,8 +103,9 @@
             this.NoteTextBox.ReadOnly = true;
             this.NoteTextBox.Size = new System.Drawing.Size(522, 395);
             this.NoteTextBox.TabIndex = 6;
+            this.NoteTextBox.TextChanged += new System.EventHandler(this.NoteTextBox_TextChanged);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -112,11 +114,11 @@
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.ModifiedButton);
             this.Controls.Add(this.CreateButton);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.Label1);
             this.Controls.Add(this.ListBox);
             this.Controls.Add(this.CategoryComboBox);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "NoteApp";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -128,7 +130,7 @@
 
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.ListBox ListBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.Button ModifiedButton;
         private System.Windows.Forms.Button RemoveButton;

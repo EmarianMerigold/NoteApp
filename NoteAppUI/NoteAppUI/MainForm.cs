@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace NoteAppUI
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         private Project _project = new Project();
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         
@@ -23,10 +23,10 @@ namespace NoteAppUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
@@ -51,6 +51,16 @@ namespace NoteAppUI
             _project.Notes.Add(notesCount, note);
 
             ListBox.Items.Add(note.Title);
+        }
+
+        private void NoteTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
