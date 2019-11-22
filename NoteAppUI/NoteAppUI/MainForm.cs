@@ -46,11 +46,13 @@ namespace NoteAppUI
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            var note = new Note(DateTime.Now.ToString(), DateTime.Now.ToString(), Category.Documents, DateTime.Now, DateTime.Now);
+            var note = new Note("Title", "Text", Category.Documents, DateTime.Now, DateTime.Now);
             var notesCount = _project.Notes.Count;
             _project.Notes.Add(notesCount, note);
 
             ListBox.Items.Add(note.Title);
+            NewForm newForm = new NewForm(note);
+            newForm.ShowDialog();
         }
 
         private void NoteTextBox_TextChanged(object sender, EventArgs e)
@@ -59,6 +61,11 @@ namespace NoteAppUI
         }
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

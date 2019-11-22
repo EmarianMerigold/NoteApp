@@ -12,22 +12,18 @@ namespace NoteApp
     public class Note
     {
         /// <summary>
-        /// 
+        /// Задаём поля, которые будет содержать блокнот.
         /// </summary>
-        private Category _category;
-        private string _title;
+        private Category _category=0;
+        private string _title="Безымянный";
         private string _text = "Текст";
         private DateTime _created = DateTime.Now;
         private DateTime _modified = DateTime.Now;
 
         /// <summary>
-        /// 
+        /// Реализуем конструктор классов.
         /// </summary>
-        /// <param name="title"></param>
-        /// <param name="text"></param>
-        /// <param name="category"></param>
-        /// <param name="created"></param>
-        /// <param name="modified"></param>
+        
         public Note(string title, string text, Category category, DateTime created, DateTime modified)
         {
             Title = title;
@@ -59,7 +55,7 @@ namespace NoteApp
         }
 
         /// <summary>
-        /// Возвращает и задаёт текст.
+        /// Возвращает и задаёт текст. Устанавливается ограничение на количество символов.
         /// </summary>
         public string Text
         {

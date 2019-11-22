@@ -16,7 +16,7 @@ namespace ConsoleApp
             // создали библитеку блокнотов
             Project project1 = new Project();
             // добавили в библиотеку note1
-            project1.dictionary.Add(1, note1);
+            project1.Notes.Add(1, note1);
 
             ProjectManager.SaveToFile(project1, @"c:\text.txt");
         }

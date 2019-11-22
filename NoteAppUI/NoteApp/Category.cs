@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
+
+    /// <summary>
+    /// Задаём допустимые категории.
+    /// </summary>
     public enum Category
     {
         Work,

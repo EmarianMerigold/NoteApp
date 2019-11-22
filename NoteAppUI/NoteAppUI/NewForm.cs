@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NoteApp;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace NoteAppUI
 {
     public partial class NewForm : Form
     {
-        public NewForm()
+        public NewForm(Note note)
         {
             InitializeComponent();
         }

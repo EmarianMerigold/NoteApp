@@ -34,6 +34,9 @@
             this.LabelTitle = new System.Windows.Forms.Label();
             this.LabelCategory = new System.Windows.Forms.Label();
             this.LabelCreated = new System.Windows.Forms.Label();
+            this.ModifiedLabel = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // TitleBox
@@ -54,7 +57,7 @@
             // 
             // TextBox
             // 
-            this.TextBox.Location = new System.Drawing.Point(12, 93);
+            this.TextBox.Location = new System.Drawing.Point(12, 96);
             this.TextBox.Multiline = true;
             this.TextBox.Name = "TextBox";
             this.TextBox.Size = new System.Drawing.Size(776, 312);
@@ -82,17 +85,43 @@
             // LabelCreated
             // 
             this.LabelCreated.AutoSize = true;
-            this.LabelCreated.Location = new System.Drawing.Point(13, 74);
+            this.LabelCreated.Location = new System.Drawing.Point(12, 72);
             this.LabelCreated.Name = "LabelCreated";
             this.LabelCreated.Size = new System.Drawing.Size(47, 13);
             this.LabelCreated.TabIndex = 5;
             this.LabelCreated.Text = "Created:";
+            // 
+            // ModifiedLabel
+            // 
+            this.ModifiedLabel.AutoSize = true;
+            this.ModifiedLabel.Location = new System.Drawing.Point(225, 72);
+            this.ModifiedLabel.Name = "ModifiedLabel";
+            this.ModifiedLabel.Size = new System.Drawing.Size(50, 13);
+            this.ModifiedLabel.TabIndex = 6;
+            this.ModifiedLabel.Text = "Modified:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(69, 70);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(137, 20);
+            this.dateTimePicker1.TabIndex = 7;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Location = new System.Drawing.Point(281, 70);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(141, 20);
+            this.dateTimePicker2.TabIndex = 8;
             // 
             // NewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.ModifiedLabel);
             this.Controls.Add(this.LabelCreated);
             this.Controls.Add(this.LabelCategory);
             this.Controls.Add(this.LabelTitle);
@@ -115,5 +144,8 @@
         private System.Windows.Forms.Label LabelTitle;
         private System.Windows.Forms.Label LabelCategory;
         private System.Windows.Forms.Label LabelCreated;
+        private System.Windows.Forms.Label ModifiedLabel;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
