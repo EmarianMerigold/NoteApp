@@ -20,10 +20,10 @@ namespace NoteApp
         private DateTime _created = DateTime.Now;
         private DateTime _modified = DateTime.Now;
 
+
         /// <summary>
         /// Реализуем конструктор классов.
-        /// </summary>
-        
+        /// </summary> 
         public Note(string title, string text, Category category, DateTime created, DateTime modified)
         {
             Title = title;

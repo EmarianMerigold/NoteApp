@@ -46,13 +46,23 @@ namespace NoteAppUI
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            var note = new Note("Title", "Text", Category.Documents, DateTime.Now, DateTime.Now);
-            var notesCount = _project.Notes.Count;
-            _project.Notes.Add(notesCount, note);
+            /*var note = new Note("Title", "Text", Category.Documents, DateTime.Now, DateTime.Now);
+             var notesCount = _project.Notes.Count;
+             _project.Notes.Add(notesCount, note);
+             */
+           
+            //Создаём форму
 
-            ListBox.Items.Add(note.Title);
-            NewForm newForm = new NewForm(note);
-            newForm.ShowDialog();
+            AddEditForm addEditForm = new AddEditForm();
+            //показывваем форму
+
+            addEditForm.ShowDialog();
+            //Добавляем запись в листбокс
+            ListBox.Items.Add(addEditForm.note1.Title);
+                
+             
+
+
         }
 
         private void NoteTextBox_TextChanged(object sender, EventArgs e)
