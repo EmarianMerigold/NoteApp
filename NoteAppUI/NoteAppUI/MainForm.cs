@@ -13,19 +13,16 @@ namespace NoteAppUI
 {
     public partial class MainForm : Form
     {
-        private Project _project; //= new Project()//
-
+        private Project _project; 
         public MainForm()
         {
             InitializeComponent();
             LoadProject();
             TitleListboxAdd();
-            //Передача полю Combobox формы MainForm значений из перечисление NoteCategory.
+            //Передача полю CategoryCombobox формы MainForm значений из перечисления Category.
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
-
-            //Дополнительная реализация конец.
-
         }
+
         /// <summary>
         /// Функция для подсчёта записей в словаре.
         /// </summary>
@@ -86,6 +83,9 @@ namespace NoteAppUI
 
         }
 
+        /// <summary>
+        /// Кнопка редактирования.
+        /// </summary>
         private void ModifiedButton_Click(object sender, EventArgs e)
         {
             AddEditForm form = new AddEditForm(_project);
@@ -118,7 +118,7 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Обработчик который выводит данные заметки на компоненты формы..
+        /// Обработчик который выводит данные заметки на компоненты формы.
         /// </summary>
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -137,6 +137,9 @@ namespace NoteAppUI
             Titlelabel.Visible = true;
         }
 
+        /// <summary>
+        /// Кнопка добавления.
+        /// </summary>
         private void CreateButton_Click(object sender, EventArgs e)
         {
 
@@ -148,38 +151,21 @@ namespace NoteAppUI
                 TitleListboxAdd();
                 SaveProject();
             }
-
-            /*var note = new Note("Title", "Text", Category.Documents, DateTime.Now, DateTime.Now);
-             var notesCount = _project.Notes.Count;
-             _project.Notes.Add(notesCount, note);
-             */
-
-            //Создаём форму
-
-            //AddEditForm addEditForm = new AddEditForm();
-            //показывваем форму
-
-            //addEditForm.ShowDialog();
-            //Добавляем запись в листбокс
-            //ListBox.Items.Add(addEditForm.note1.Title);
-
-
-
-
         }
 
         private void NoteTextBox_TextChanged(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// Выбор категории из ComboBox в MainForm.
+        /// </summary>
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             TitleListboxAdd();
         }
-
         /// <summary>
-        /// Функция которая находить ключ по значению. 
+        /// Функция которая находит ключ по значению.
         /// </summary>
         /// <param name="value"></param>
         /// <returns>Возвращает индекс ключа</returns>
@@ -193,6 +179,7 @@ namespace NoteAppUI
 
             return -1;
         }
+
         /// <summary>
         /// Функция, которая проверяет доступность ключа в словаре.
         /// </summary>
@@ -209,11 +196,14 @@ namespace NoteAppUI
             return -1;
         }
 
-        private void fileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Кнопка удаления.
+        /// </summary>
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             //Проверка выборки.
@@ -231,17 +221,19 @@ namespace NoteAppUI
             }
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Выход в верхнем меню (File -> Exit).
+        /// </summary>
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveProject();
             Application.Exit();
         }
 
-
         /// <summary>
-        /// Верхнее меню-> Добавление.
+        /// Добавление в верхнем меню.
         /// </summary>
-        private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddEditForm form = new AddEditForm(_project);
 
@@ -253,11 +245,10 @@ namespace NoteAppUI
             }
         }
 
-
         /// <summary>
-        /// Верхнее меню-> Редактирование.
+        /// Редактирование в верхнем меню.
         /// </summary>
-        private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddEditForm form = new AddEditForm(_project);
             // Переменная для хранения ключа редактирования записи.
@@ -289,9 +280,9 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Верхнее меню-> Удаление.
+        /// Удаление в верхнем меню.
         /// </summary>
-        private void removeNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemoveNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Проверка выборки.
             int selectedID = ListBox.SelectedIndex;
@@ -308,15 +299,18 @@ namespace NoteAppUI
             }
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// О программе в верхнем меню.
+        /// </summary>
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutForm form = new AboutForm();
             form.Show();
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

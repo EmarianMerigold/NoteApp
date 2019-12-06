@@ -51,6 +51,7 @@
             // 
             // CategoryComboBox
             // 
+            this.CategoryComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CategoryComboBox.FormattingEnabled = true;
             this.CategoryComboBox.Location = new System.Drawing.Point(69, 43);
             this.CategoryComboBox.Name = "CategoryComboBox";
@@ -70,6 +71,7 @@
             // LabelTitle
             // 
             this.LabelTitle.AutoSize = true;
+            this.LabelTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LabelTitle.Location = new System.Drawing.Point(12, 20);
             this.LabelTitle.Name = "LabelTitle";
             this.LabelTitle.Size = new System.Drawing.Size(30, 13);
@@ -79,6 +81,7 @@
             // LabelCategory
             // 
             this.LabelCategory.AutoSize = true;
+            this.LabelCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LabelCategory.Location = new System.Drawing.Point(12, 46);
             this.LabelCategory.Name = "LabelCategory";
             this.LabelCategory.Size = new System.Drawing.Size(52, 13);
@@ -88,6 +91,7 @@
             // LabelCreated
             // 
             this.LabelCreated.AutoSize = true;
+            this.LabelCreated.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LabelCreated.Location = new System.Drawing.Point(12, 72);
             this.LabelCreated.Name = "LabelCreated";
             this.LabelCreated.Size = new System.Drawing.Size(47, 13);
@@ -97,6 +101,7 @@
             // ModifiedLabel
             // 
             this.ModifiedLabel.AutoSize = true;
+            this.ModifiedLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ModifiedLabel.Location = new System.Drawing.Point(225, 72);
             this.ModifiedLabel.Name = "ModifiedLabel";
             this.ModifiedLabel.Size = new System.Drawing.Size(50, 13);
@@ -109,7 +114,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(137, 20);
             this.dateTimePicker1.TabIndex = 7;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
             // 
             // dateTimePicker2
             // 
@@ -117,7 +122,7 @@
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(141, 20);
             this.dateTimePicker2.TabIndex = 8;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.DateTimePicker2_ValueChanged);
             // 
             // OkButton
             // 

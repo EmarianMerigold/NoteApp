@@ -14,7 +14,7 @@ namespace NoteAppUI
     public partial class AddEditForm : Form
     {
         public Note note;
-        public AddEditForm(Project Notes)
+        public AddEditForm(Project notes)
         {
             InitializeComponent();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
@@ -55,12 +55,12 @@ namespace NoteAppUI
            
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
         }
