@@ -13,9 +13,11 @@ namespace NoteAppUI
 {
     public partial class AddEditForm : Form
     {
-        public AddEditForm()
+        public Note note;
+        public AddEditForm(Project Notes)
         {
             InitializeComponent();
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
 
         private void NewForm_Load(object sender, EventArgs e)
@@ -33,8 +35,9 @@ namespace NoteAppUI
        public  Note note1;
         private void OkButton_Click(object sender, EventArgs e)
         {
-           note1 = new Note(TitleBox.Text, TextBox.Text, Category.Documents, dateTimePicker1.Value, dateTimePicker2.Value);
-            this.Close();
+            int Category = CategoryComboBox.SelectedIndex;
+            note = new Note(TitleBox.Text, TextBox.Text, (Category)Category, DateTime.Now, DateTime.Now);
+            DialogResult = DialogResult.OK;
         }
 
 
@@ -60,6 +63,11 @@ namespace NoteAppUI
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

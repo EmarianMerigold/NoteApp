@@ -14,21 +14,26 @@ namespace NoteApp
         /// <summary>
         /// Задаём поля, которые будет содержать блокнот.
         /// </summary>
-        private Category _category=0;
+        public Category Category;
         private string _title="Безымянный";
-        private string _text = "Текст";
-        private DateTime _created = DateTime.Now;
-        private DateTime _modified = DateTime.Now;
+        public string _text = "Текст";
+        public DateTime _created = DateTime.Now;
+        public DateTime _modified = DateTime.Now;
 
 
         /// <summary>
-        /// Реализуем конструктор классов.
+        /// Реализуем конструктор класса Note.
         /// </summary> 
+        /// /// <param name="_title"> Поле Заголовок заметки</param>
+        /// <param name="_text"> Поле Текст заметки</param>
+        /// <param name="Category"> Поле Категория заметки</param>
+        /// <param name="_created"> Поле Дата создания заметки</param>
+        /// <param name="_modified"> Поле Дата изменения заметки</param>
         public Note(string title, string text, Category category, DateTime created, DateTime modified)
         {
             Title = title;
             Text = text;
-            category = _category;
+            Category = category;
             Created = created;
             Modified = modified;
         }

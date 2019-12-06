@@ -137,8 +137,9 @@
             this.CancelButton.TabIndex = 10;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
-            // NewForm
+            // AddEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -154,7 +155,7 @@
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.CategoryComboBox);
             this.Controls.Add(this.TitleBox);
-            this.Name = "NewForm";
+            this.Name = "AddEditForm";
             this.Text = "Add/Edit Note";
             this.Load += new System.EventHandler(this.NewForm_Load);
             this.ResumeLayout(false);

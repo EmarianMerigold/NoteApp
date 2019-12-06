@@ -13,12 +13,67 @@ namespace NoteAppUI
 {
     public partial class MainForm : Form
     {
-        private Project _project = new Project();
+        private Project _project; //= new Project()//
 
         public MainForm()
         {
             InitializeComponent();
-        
+            LoadProject();
+            TitleListboxAdd();
+            //Передача полю Combobox формы MainForm значений из перечисление NoteCategory.
+            ComoBoxCategory.DataSource = Enum.GetValues(typeof(NoteCategory));
+
+            //Дополнительная реализация конец.
+
+        }
+        /// <summary>
+        /// Функция для подсчёта записей в словаре.
+        /// </summary>
+        public int NewNumberOfRecords()
+        {
+            int numberОfRecords = _project.dictionary.Count;
+            return numberОfRecords;
+        }
+
+        /// <summary>
+        /// Обработчик, заполняющий ListBox заголовками заметок из словаря.
+        /// </summary>
+        public void TitleListboxAdd()
+        {
+            TitleListbox.Items.Clear();
+            foreach (KeyValuePair<int, Note> kvp in _project.dictionary)
+            {
+                int n = 0;
+                if (ComoBoxCategory.SelectedIndex == Convert.ToInt32(kvp.Value.Category))
+                {
+                    TitleListbox.Items.Insert(n, kvp.Value.Title);
+                    n++;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Функция загрузки данных в программу.
+        /// </summary>
+        public void LoadProject()
+        {
+            try
+            {
+                string defaultPath = @"d:\\text.json";
+                _project = ProjectManager.LoadFromFile(defaultPath);
+            }
+            catch
+            {
+                _project = new Project();
+            }
+        }
+
+        /// <summary>
+        /// Функция сохранения записей в файл Json.
+        /// </summary>
+        public void SaveProject()
+        {
+            ProjectManager.SaveToFile(_project, @"c:\text.txt");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -33,34 +88,82 @@ namespace NoteAppUI
 
         private void ModifiedButton_Click(object sender, EventArgs e)
         {
-
+            AddEditForm form = new AddEditForm(_project);
+            // Переменная для хранения ключа редактирования записи.
+            int selectedID = ListBox.SelectedIndex;
+            // Показ уже имеющихся данных в окне редактирования.
+            if (selectedID < 0)
+            {
+                MessageBox.Show("Выберите пожайлуста заметку!", "Ошибка", MessageBoxButtons.OK);
+            }
+            else
+            {
+                string NoteValue = ListBox.SelectedItem.ToString();
+                int OperatedKey = GetKeyByValue(NoteValue);
+                form.TitleBox.Text = _project.Notes[OperatedKey].Title;
+                form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
+                form.TextBox.Text = _project.Notes[OperatedKey].Text;
+                form.dateTimePicker1.Value = _project.Notes[OperatedKey].Created;
+                form.dateTimePicker2.Value = _project.Notes[OperatedKey].Modified;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    DateTime KeepDate = _project.Notes[OperatedKey].Created;
+                    form.note.Created = KeepDate;
+                    _project.Notes[OperatedKey] = (form.note);
+                    SaveProject();
+                    ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
+                    ListBoxAdd();
+                }
+            }
         }
 
+        /// <summary>
+        /// Обработчик который выводит данные заметки на компоненты формы..
+        /// </summary>
         private void ListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ListBox.SelectedIndex != -1)
             {
-                NoteTextBox.Text = _project.Notes[ListBox.SelectedIndex].Text;
+                int selected = GetKeyByValue(ListBox.SelectedItem.ToString());
+                Titlelabel.Text = ListBox.SelectedItem.ToString();
+                string CategoryText = "Note not selected";
+                CategoryText = _project.Notes[selected].Category.ToString();
+                CategoryLabel.Text = CategoryText;
+                CategoryLabel.Visible = true;
+                NoteTextBox.Text = _project.Notes[selected].Text;
+                dateTimePicker1.Value = _project.Notes[selected].Created;
+                dateTimePicker2.Value = _project.Notes[selected].Modified;
             }
+            Titlelabel.Visible = true;
         }
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
+
+            AddEditForm form = new AddEditForm(_project);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _project.Notes.Add(NewNumberOfRecords(), form.note);
+                TitleListboxAdd();
+                SaveProject();
+            }
+
             /*var note = new Note("Title", "Text", Category.Documents, DateTime.Now, DateTime.Now);
              var notesCount = _project.Notes.Count;
              _project.Notes.Add(notesCount, note);
              */
-           
+
             //Создаём форму
 
-            AddEditForm addEditForm = new AddEditForm();
+            //AddEditForm addEditForm = new AddEditForm();
             //показывваем форму
 
-            addEditForm.ShowDialog();
+            //addEditForm.ShowDialog();
             //Добавляем запись в листбокс
-            ListBox.Items.Add(addEditForm.note1.Title);
-                
-             
+            //ListBox.Items.Add(addEditForm.note1.Title);
+
+
 
 
         }
@@ -72,12 +175,148 @@ namespace NoteAppUI
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ListBoxAdd();
+        }
 
+        /// <summary>
+        /// Функция которая находить ключ по значению. 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Возвращает индекс ключа</returns>
+        public int GetKeyByValue(string value)
+        {
+            foreach (KeyValuePair<int, Note> kvp in _project.Notes)
+            {
+                if (kvp.Value.Title.Equals(value))
+                    return kvp.Key;
+            }
+
+            return -1;
+        }
+        /// <summary>
+        /// Функция, которая проверяет доступность ключа в словаре.
+        /// </summary>
+        /// <returns>Возвращает индекс доступного ключа.</returns>
+        public int AvailableKey()
+        {
+            int i = 0;
+            foreach (KeyValuePair<int, Note> kvp in _project.Notes)
+            {
+                if (kvp.Key == i)
+                    i++;
+                else return i;
+            }
+            return -1;
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void RemoveButton_Click(object sender, EventArgs e)
+        {
+            //Проверка выборки.
+            int selectedID = ListBox.SelectedIndex;
+            if (selectedID < 0)
+            {
+                MessageBox.Show("Выберите пожайлуста заметку!", "Ошибка", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
+                _project.Notes.Remove(operatedKey);
+                ListBoxAdd();
+                SaveProject();
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveProject();
+            Application.Exit();
+        }
+
+
+        /// <summary>
+        /// Верхнее меню-> Добавление.
+        /// </summary>
+        private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEditForm form = new AddEditForm(_project);
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                _project.Notes.Add(AvailableKey(), form.note);
+                TitleListboxAdd();
+                SaveProject();
+            }
+        }
+
+
+        /// <summary>
+        /// Верхнее меню-> Редактирование.
+        /// </summary>
+        private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddEditForm form = new AddEditForm(_project);
+            // Переменная для хранения ключа редактирования записи.
+            int selectedID = ListBox.SelectedIndex;
+            // Показ уже имеющихся данных в окне редактирования.
+            if (selectedID < 0)
+            {
+                MessageBox.Show("Выберите пожайлуста заметку!", "Ошибка", MessageBoxButtons.OK);
+            }
+            else
+            {
+                string NoteValue = ListBox.SelectedItem.ToString();
+                int OperatedKey = GetKeyByValue(NoteValue);
+                form.TitleBox.Text = _project.Notes[OperatedKey].Title;
+                form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
+                form.TextBox.Text = _project.Notes[OperatedKey].Text;
+                form.dateTimePicker1.Value = _project.Notes[OperatedKey].Created;
+                form.dateTimePicker2.Value = _project.Notes[OperatedKey].Modified;
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    DateTime KeepDate = _project.Notes[OperatedKey].Created;
+                    form.note.Created = KeepDate;
+                    _project.Notes[OperatedKey] = (form.note);
+                    SaveProject();
+                    ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
+                    TitleListboxAdd();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Верхнее меню-> Удаление.
+        /// </summary>
+        private void removeNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Проверка выборки.
+            int selectedID = ListBox.SelectedIndex;
+            if (selectedID < 0)
+            {
+                MessageBox.Show("Выберите пожайлуста заметку!", "Ошибка", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
+                _project.Notes.Remove(operatedKey);
+                TitleListboxAdd();
+                SaveProject();
+            }
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutForm form = new AboutForm();
+            form.Show();
         }
     }
 }
