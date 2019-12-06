@@ -24,7 +24,7 @@ namespace ConsoleApp
             // добавили в библиотеку note1
             //project1.Notes.Add(1, note1);
 
-            ProjectManager.SaveToFile(pClass, @"c:\text.txt");
+            ProjectManager.SaveToFile(pClass, @"c:\Notes.json");
             Project pClass2 = new Project();
         }
     }

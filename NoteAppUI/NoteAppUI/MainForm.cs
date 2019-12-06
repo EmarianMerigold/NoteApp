@@ -21,7 +21,7 @@ namespace NoteAppUI
             LoadProject();
             TitleListboxAdd();
             //Передача полю Combobox формы MainForm значений из перечисление NoteCategory.
-            ComoBoxCategory.DataSource = Enum.GetValues(typeof(NoteCategory));
+            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
 
             //Дополнительная реализация конец.
 
@@ -31,7 +31,7 @@ namespace NoteAppUI
         /// </summary>
         public int NewNumberOfRecords()
         {
-            int numberОfRecords = _project.dictionary.Count;
+            int numberОfRecords = _project.Notes.Count;
             return numberОfRecords;
         }
 
@@ -40,13 +40,13 @@ namespace NoteAppUI
         /// </summary>
         public void TitleListboxAdd()
         {
-            TitleListbox.Items.Clear();
-            foreach (KeyValuePair<int, Note> kvp in _project.dictionary)
+            ListBox.Items.Clear();
+            foreach (KeyValuePair<int, Note> kvp in _project.Notes)
             {
                 int n = 0;
-                if (ComoBoxCategory.SelectedIndex == Convert.ToInt32(kvp.Value.Category))
+                if (CategoryComboBox.SelectedIndex == Convert.ToInt32(kvp.Value.Category))
                 {
-                    TitleListbox.Items.Insert(n, kvp.Value.Title);
+                    ListBox.Items.Insert(n, kvp.Value.Title);
                     n++;
                 }
             }
@@ -59,7 +59,7 @@ namespace NoteAppUI
         {
             try
             {
-                string defaultPath = @"d:\\text.json";
+                string defaultPath = @"c:\Notes.json";
                 _project = ProjectManager.LoadFromFile(defaultPath);
             }
             catch
@@ -73,7 +73,7 @@ namespace NoteAppUI
         /// </summary>
         public void SaveProject()
         {
-            ProjectManager.SaveToFile(_project, @"c:\text.txt");
+            ProjectManager.SaveToFile(_project, @"c:\Notes.json");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -112,7 +112,7 @@ namespace NoteAppUI
                     _project.Notes[OperatedKey] = (form.note);
                     SaveProject();
                     ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
-                    ListBoxAdd();
+                    TitleListboxAdd();
                 }
             }
         }
@@ -175,7 +175,7 @@ namespace NoteAppUI
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ListBoxAdd();
+            TitleListboxAdd();
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace NoteAppUI
             {
                 int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
                 _project.Notes.Remove(operatedKey);
-                ListBoxAdd();
+                TitleListboxAdd();
                 SaveProject();
             }
         }

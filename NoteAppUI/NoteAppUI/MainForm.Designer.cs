@@ -86,6 +86,7 @@
             // 
             // CreateButton
             // 
+            this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Image = ((System.Drawing.Image)(resources.GetObject("CreateButton.Image")));
             this.CreateButton.Location = new System.Drawing.Point(4, 64);
             this.CreateButton.Name = "CreateButton";
@@ -96,6 +97,7 @@
             // 
             // ModifiedButton
             // 
+            this.ModifiedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ModifiedButton.Image = ((System.Drawing.Image)(resources.GetObject("ModifiedButton.Image")));
             this.ModifiedButton.Location = new System.Drawing.Point(4, 155);
             this.ModifiedButton.Name = "ModifiedButton";
@@ -106,6 +108,7 @@
             // 
             // RemoveButton
             // 
+            this.RemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveButton.Image")));
             this.RemoveButton.Location = new System.Drawing.Point(4, 109);
             this.RemoveButton.Name = "RemoveButton";
@@ -204,9 +207,9 @@
             this.Captionlabel.AutoSize = true;
             this.Captionlabel.Location = new System.Drawing.Point(277, 45);
             this.Captionlabel.Name = "Captionlabel";
-            this.Captionlabel.Size = new System.Drawing.Size(54, 13);
+            this.Captionlabel.Size = new System.Drawing.Size(30, 13);
             this.Captionlabel.TabIndex = 8;
-            this.Captionlabel.Text = "Заметка:";
+            this.Captionlabel.Text = "Title:";
             // 
             // Titlelabel
             // 
