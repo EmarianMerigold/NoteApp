@@ -18,7 +18,7 @@ namespace NoteAppUI
         {
             InitializeComponent();
             LoadProject();
-            TitleListboxAdd();
+            AddTitlesToListbox();
             //Передача полю CategoryCombobox формы MainForm значений из перечисления Category.
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
@@ -35,7 +35,7 @@ namespace NoteAppUI
         /// <summary>
         /// Обработчик, заполняющий ListBox заголовками заметок из словаря.
         /// </summary>
-        public void TitleListboxAdd()
+        public void AddTitlesToListbox()
         {
             ListBox.Items.Clear();
             foreach (KeyValuePair<int, Note> kvp in _project.Notes)
@@ -112,7 +112,7 @@ namespace NoteAppUI
                     _project.Notes[OperatedKey] = (form.note);
                     SaveProject();
                     ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
-                    TitleListboxAdd();
+                    AddTitlesToListbox();
                 }
             }
         }
@@ -131,7 +131,7 @@ namespace NoteAppUI
                 CategoryLabel.Text = CategoryText;
                 CategoryLabel.Visible = true;
                 NoteTextBox.Text = _project.Notes[selected].Text;
-                dateTimePicker1.Value = _project.Notes[selected].Created;
+                DateCreatedPicker.Value = _project.Notes[selected].Created;
                 dateTimePicker2.Value = _project.Notes[selected].Modified;
             }
             Titlelabel.Visible = true;
@@ -148,7 +148,7 @@ namespace NoteAppUI
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _project.Notes.Add(NewNumberOfRecords(), form.note);
-                TitleListboxAdd();
+                AddTitlesToListbox();
                 SaveProject();
             }
         }
@@ -162,7 +162,7 @@ namespace NoteAppUI
         /// </summary>
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TitleListboxAdd();
+            AddTitlesToListbox();
         }
         /// <summary>
         /// Функция которая находит ключ по значению.
@@ -216,7 +216,7 @@ namespace NoteAppUI
             {
                 int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
                 _project.Notes.Remove(operatedKey);
-                TitleListboxAdd();
+                AddTitlesToListbox();
                 SaveProject();
             }
         }
@@ -240,7 +240,7 @@ namespace NoteAppUI
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _project.Notes.Add(AvailableKey(), form.note);
-                TitleListboxAdd();
+                AddTitlesToListbox();
                 SaveProject();
             }
         }
@@ -274,7 +274,7 @@ namespace NoteAppUI
                     _project.Notes[OperatedKey] = (form.note);
                     SaveProject();
                     ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
-                    TitleListboxAdd();
+                    AddTitlesToListbox();
                 }
             }
         }
@@ -294,7 +294,7 @@ namespace NoteAppUI
             {
                 int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
                 _project.Notes.Remove(operatedKey);
-                TitleListboxAdd();
+                AddTitlesToListbox();
                 SaveProject();
             }
         }
@@ -309,6 +309,16 @@ namespace NoteAppUI
         }
 
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DateCreatedPicker_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DateModifiedPicker_ValueChanged(object sender, EventArgs e)
         {
 
         }

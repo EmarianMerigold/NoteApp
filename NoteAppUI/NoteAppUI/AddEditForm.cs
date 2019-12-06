@@ -25,8 +25,6 @@ namespace NoteAppUI
 
         }
 
-        
-
         private void TextBox_TextChanged(object sender, EventArgs e)
         {
 
@@ -40,11 +38,6 @@ namespace NoteAppUI
             DialogResult = DialogResult.OK;
         }
 
-
-
-
-
-
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
 
@@ -55,12 +48,12 @@ namespace NoteAppUI
            
         }
 
-        private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
+        private void DateModifiedPicker_ValueChanged(object sender, EventArgs e)
         {
             
         }
 
-        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void DateCreatePicker_ValueChanged(object sender, EventArgs e)
         {
 
         }
