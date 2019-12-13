@@ -52,7 +52,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.DateCreatedPicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.DateModifiedPicker = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,7 +153,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -272,20 +272,20 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Modified:";
             // 
-            // DateModifiedPicker
+            // dateTimePicker2
             // 
-            this.DateModifiedPicker.Location = new System.Drawing.Point(542, 105);
-            this.DateModifiedPicker.Name = "DateModifiedPicker";
-            this.DateModifiedPicker.Size = new System.Drawing.Size(139, 20);
-            this.DateModifiedPicker.TabIndex = 15;
-            this.DateModifiedPicker.ValueChanged += new System.EventHandler(this.DateModifiedPicker_ValueChanged);
+            this.dateTimePicker2.Location = new System.Drawing.Point(542, 105);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(139, 20);
+            this.dateTimePicker2.TabIndex = 15;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.DateModifiedPicker_ValueChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.DateModifiedPicker);
+            this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.DateCreatedPicker);
             this.Controls.Add(this.label2);
@@ -338,7 +338,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker DateCreatedPicker;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker DateModifiedPicker;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
 

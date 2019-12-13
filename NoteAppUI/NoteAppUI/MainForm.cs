@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace NoteAppUI
 {
@@ -57,7 +56,7 @@ namespace NoteAppUI
         {
             try
             {
-                string defaultPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyNotes\\Notes.json");
+                string defaultPath = @"c:\Notes.json";
                 _project = ProjectManager.LoadFromFile(defaultPath);
             }
             catch
@@ -71,10 +70,7 @@ namespace NoteAppUI
         /// </summary>
         public void SaveProject()
         {
-            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyNotes")))
-                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyNotes"));
-            ProjectManager.SaveToFile(_project, (Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "MyNotes\\Notes.json")));
+            ProjectManager.SaveToFile(_project, @"c:\Notes.json");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -104,11 +100,11 @@ namespace NoteAppUI
             {
                 string NoteValue = ListBox.SelectedItem.ToString();
                 int OperatedKey = GetKeyByValue(NoteValue);
-                form.NoteTitle_Edit = _project.Notes[OperatedKey].Title;
-                form.NoteCategory_Edit = Convert.ToInt32(_project.Notes[OperatedKey].Category);
-                form.NoteText_Edit = _project.Notes[OperatedKey].Text;
-                form.CreatedDateTime_Edit = _project.Notes[OperatedKey].Created;
-                form.ModifiedDateTime_Edit = _project.Notes[OperatedKey].Modified;
+                form.TitleBox.Text = _project.Notes[OperatedKey].Title;
+                form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
+                form.TextBox.Text = _project.Notes[OperatedKey].Text;
+                form.dateTimePicker1.Value = _project.Notes[OperatedKey].Created;
+                form.dateTimePicker2.Value = _project.Notes[OperatedKey].Modified;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     DateTime KeepDate = _project.Notes[OperatedKey].Created;
@@ -136,7 +132,7 @@ namespace NoteAppUI
                 CategoryLabel.Visible = true;
                 NoteTextBox.Text = _project.Notes[selected].Text;
                 DateCreatedPicker.Value = _project.Notes[selected].Created;
-                DateModifiedPicker.Value = _project.Notes[selected].Modified;
+                dateTimePicker2.Value = _project.Notes[selected].Modified;
             }
             Titlelabel.Visible = true;
         }
@@ -266,11 +262,11 @@ namespace NoteAppUI
             {
                 string NoteValue = ListBox.SelectedItem.ToString();
                 int OperatedKey = GetKeyByValue(NoteValue);
-                form.NoteTitle_Edit = _project.Notes[OperatedKey].Title;
-                form.NoteCategory_Edit = Convert.ToInt32(_project.Notes[OperatedKey].Category);
-                form.NoteText_Edit = _project.Notes[OperatedKey].Text;
-                form.CreatedDateTime_Edit = _project.Notes[OperatedKey].Created;
-                form.ModifiedDateTime_Edit = _project.Notes[OperatedKey].Modified;
+                form.TitleBox.Text = _project.Notes[OperatedKey].Title;
+                form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
+                form.TextBox.Text = _project.Notes[OperatedKey].Text;
+                form.dateTimePicker1.Value = _project.Notes[OperatedKey].Created;
+                form.dateTimePicker2.Value = _project.Notes[OperatedKey].Modified;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     DateTime KeepDate = _project.Notes[OperatedKey].Created;
@@ -302,15 +298,6 @@ namespace NoteAppUI
                 SaveProject();
             }
         }
-
-        /// <summary>
-        /// Обработчик событий при закрытии формы MainForm.
-        /// </summary>
-        private void MainForm_FormClosed(Object sender, FormClosedEventArgs e)
-        {
-            SaveProject();
-        }
-
 
         /// <summary>
         /// О программе в верхнем меню.
