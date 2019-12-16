@@ -35,8 +35,8 @@
             this.LabelCategory = new System.Windows.Forms.Label();
             this.LabelCreated = new System.Windows.Forms.Label();
             this.ModifiedLabel = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.CreatedDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.OkButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -108,21 +108,21 @@
             this.ModifiedLabel.TabIndex = 6;
             this.ModifiedLabel.Text = "Modified:";
             // 
-            // dateTimePicker1
+            // CreatedDateTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(69, 70);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(137, 20);
-            this.dateTimePicker1.TabIndex = 7;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.DateCreatePicker_ValueChanged);
+            this.CreatedDateTimePicker.Location = new System.Drawing.Point(69, 70);
+            this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
+            this.CreatedDateTimePicker.Size = new System.Drawing.Size(137, 20);
+            this.CreatedDateTimePicker.TabIndex = 7;
+            this.CreatedDateTimePicker.ValueChanged += new System.EventHandler(this.DateCreatePicker_ValueChanged);
             // 
-            // dateTimePicker2
+            // ModifiedDateTimePicker
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(281, 70);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(141, 20);
-            this.dateTimePicker2.TabIndex = 8;
-            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.DateModifiedPicker_ValueChanged);
+            this.ModifiedDateTimePicker.Location = new System.Drawing.Point(281, 70);
+            this.ModifiedDateTimePicker.Name = "ModifiedDateTimePicker";
+            this.ModifiedDateTimePicker.Size = new System.Drawing.Size(141, 20);
+            this.ModifiedDateTimePicker.TabIndex = 8;
+            this.ModifiedDateTimePicker.ValueChanged += new System.EventHandler(this.DateModifiedPicker_ValueChanged);
             // 
             // OkButton
             // 
@@ -151,8 +151,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OkButton);
-            this.Controls.Add(this.dateTimePicker2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.ModifiedDateTimePicker);
+            this.Controls.Add(this.CreatedDateTimePicker);
             this.Controls.Add(this.ModifiedLabel);
             this.Controls.Add(this.LabelCreated);
             this.Controls.Add(this.LabelCategory);
@@ -177,8 +177,8 @@
         private System.Windows.Forms.Label LabelCategory;
         private System.Windows.Forms.Label LabelCreated;
         private System.Windows.Forms.Label ModifiedLabel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
+        private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
         private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Button CancelButton;
     }

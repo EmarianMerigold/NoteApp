@@ -33,7 +33,7 @@
             this.ListBox = new System.Windows.Forms.ListBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.CreateButton = new System.Windows.Forms.Button();
-            this.ModifiedButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
             this.RemoveButton = new System.Windows.Forms.Button();
             this.NoteTextBox = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -97,16 +97,16 @@
             this.CreateButton.UseVisualStyleBackColor = true;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
-            // ModifiedButton
+            // EditButton
             // 
-            this.ModifiedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ModifiedButton.Image = ((System.Drawing.Image)(resources.GetObject("ModifiedButton.Image")));
-            this.ModifiedButton.Location = new System.Drawing.Point(4, 155);
-            this.ModifiedButton.Name = "ModifiedButton";
-            this.ModifiedButton.Size = new System.Drawing.Size(24, 24);
-            this.ModifiedButton.TabIndex = 4;
-            this.ModifiedButton.UseVisualStyleBackColor = true;
-            this.ModifiedButton.Click += new System.EventHandler(this.ModifiedButton_Click);
+            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EditButton.Image = ((System.Drawing.Image)(resources.GetObject("EditButton.Image")));
+            this.EditButton.Location = new System.Drawing.Point(4, 155);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(24, 24);
+            this.EditButton.TabIndex = 4;
+            this.EditButton.UseVisualStyleBackColor = true;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // RemoveButton
             // 
@@ -295,7 +295,7 @@
             this.Controls.Add(this.Captionlabel);
             this.Controls.Add(this.NoteTextBox);
             this.Controls.Add(this.RemoveButton);
-            this.Controls.Add(this.ModifiedButton);
+            this.Controls.Add(this.EditButton);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.ListBox);
@@ -319,7 +319,7 @@
         private System.Windows.Forms.ListBox ListBox;
         private System.Windows.Forms.Label Label1;
         private System.Windows.Forms.Button CreateButton;
-        private System.Windows.Forms.Button ModifiedButton;
+        private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button RemoveButton;
         private System.Windows.Forms.TextBox NoteTextBox;
         private System.Windows.Forms.MenuStrip menuStrip1;

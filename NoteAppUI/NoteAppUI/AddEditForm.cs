@@ -13,8 +13,26 @@ namespace NoteAppUI
 {
     public partial class AddEditForm : Form
     {
+        public Note Note
+         {
+            get
+            {
+                return note;
+            }
+    set
+            {
+                note = value;
+                TitleBox.Text = note.Title;
+                TextBox.Text = note.Text;
+                CategoryComboBox.SelectedIndex = Convert.ToInt32(Note.Category);
+                CreatedDateTimePicker.Value = Note.Created;
+                ModifiedDateTimePicker.Value = Note.Modified;
+            }
+        }
+
         public Note note;
-        public AddEditForm(Project notes)
+
+        public AddEditForm(Project Notes)
         {
             InitializeComponent();
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));

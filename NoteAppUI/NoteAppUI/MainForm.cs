@@ -77,7 +77,7 @@ namespace NoteAppUI
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                _project.Notes.Add(AvailableKey(), form.note);
+                _project.Notes.Add(AvailableKey(), form.Note);
                 AddTitlesToListbox();
                 SaveProject();
             }
@@ -100,7 +100,7 @@ namespace NoteAppUI
             {
                 string NoteValue = ListBox.SelectedItem.ToString();
                 int OperatedKey = GetKeyByValue(NoteValue);
-                form.note = _project.Notes[OperatedKey];
+                form.Note = _project.Notes[OperatedKey];
                 //form.TitleBox.Text = _project.Notes[OperatedKey].Title;
                 //form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
                 //form.TextBox.Text = _project.Notes[OperatedKey].Text;
@@ -109,8 +109,8 @@ namespace NoteAppUI
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     DateTime KeepDate = _project.Notes[OperatedKey].Created;
-                    form.note.Created = KeepDate;
-                    _project.Notes[OperatedKey] = (form.note);
+                    form.Note.Created = KeepDate;
+                    _project.Notes[OperatedKey] = (form.Note);
                     SaveProject();
                     ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
                     AddTitlesToListbox();
@@ -236,7 +236,7 @@ namespace NoteAppUI
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                _project.Notes.Add(NewNumberOfRecords(), form.note);
+                _project.Notes.Add(_project.Notes.Count, form.Note);
                 AddTitlesToListbox();
                 SaveProject();
             }
@@ -245,7 +245,7 @@ namespace NoteAppUI
         /// <summary>
         /// Кнопка редактирования.
         /// </summary>
-        private void ModifiedButton_Click(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
         {
             AddEditForm form = new AddEditForm(_project);
             // Переменная для хранения ключа редактирования записи.
@@ -253,22 +253,22 @@ namespace NoteAppUI
             // Показ уже имеющихся данных в окне редактирования.
             if (selectedID < 0)
             {
-                MessageBox.Show("Выберите пожайлуста заметку!", "Ошибка", MessageBoxButtons.OK);
+                MessageBox.Show("Выберите заметку!", "Ошибка", MessageBoxButtons.OK);
             }
             else
             {
-                string NoteValue = ListBox.SelectedItem.ToString();
-                int OperatedKey = GetKeyByValue(NoteValue);
-                form.TitleBox.Text = _project.Notes[OperatedKey].Title;
-                form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
-                form.TextBox.Text = _project.Notes[OperatedKey].Text;
-                form.dateTimePicker1.Value = _project.Notes[OperatedKey].Created;
-                form.dateTimePicker2.Value = _project.Notes[OperatedKey].Modified;
+               string NoteValue = ListBox.SelectedItem.ToString();
+               int OperatedKey = GetKeyByValue(NoteValue);
+               //form.TitleBox.Text = _project.Notes[OperatedKey].Title;
+               //form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
+               //form.TextBox.Text = _project.Notes[OperatedKey].Text;
+               //form.dateTimePicker1.Value = _project.Notes[OperatedKey].Created;
+               //form.dateTimePicker2.Value = _project.Notes[OperatedKey].Modified;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     DateTime KeepDate = _project.Notes[OperatedKey].Created;
-                    form.note.Created = KeepDate;
-                    _project.Notes[OperatedKey] = (form.note);
+                    form.Note.Created = KeepDate;
+                    _project.Notes[OperatedKey] = (form.Note);
                     SaveProject();
                     ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
                     AddTitlesToListbox();
@@ -277,12 +277,23 @@ namespace NoteAppUI
         }
 
         /// <summary>
-        /// Функция для подсчёта записей в словаре.
+        /// Кнопка удаления.
         /// </summary>
-        public int NewNumberOfRecords()
+        private void RemoveButton_Click(object sender, EventArgs e)
         {
-            int numberОfRecords = _project.Notes.Count;
-            return numberОfRecords;
+            //Проверка выборки.
+            int selectedID = ListBox.SelectedIndex;
+            if (selectedID < 0)
+            {
+                MessageBox.Show("Выберите заметку!", "Ошибка", MessageBoxButtons.OK);
+            }
+            else
+            {
+                int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
+                _project.Notes.Remove(operatedKey);
+                AddTitlesToListbox();
+                SaveProject();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -303,26 +314,6 @@ namespace NoteAppUI
         private void FileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-        }
-
-        /// <summary>
-        /// Кнопка удаления.
-        /// </summary>
-        private void RemoveButton_Click(object sender, EventArgs e)
-        {
-            //Проверка выборки.
-            int selectedID = ListBox.SelectedIndex;
-            if (selectedID < 0)
-            {
-                MessageBox.Show("Выберите пожайлуста заметку!", "Ошибка", MessageBoxButtons.OK);
-            }
-            else
-            {
-                int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
-                _project.Notes.Remove(operatedKey);
-                AddTitlesToListbox();
-                SaveProject();
-            }
         }
 
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
