@@ -101,16 +101,11 @@ namespace NoteAppUI
                 string NoteValue = ListBox.SelectedItem.ToString();
                 int OperatedKey = GetKeyByValue(NoteValue);
                 form.Note = _project.Notes[OperatedKey];
-                //form.TitleBox.Text = _project.Notes[OperatedKey].Title;
-                //form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
-                //form.TextBox.Text = _project.Notes[OperatedKey].Text;
-                //form.dateTimePicker1.Value = _project.Notes[OperatedKey].Created;
-                //form.dateTimePicker2.Value = _project.Notes[OperatedKey].Modified;
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     DateTime KeepDate = _project.Notes[OperatedKey].Created;
-                    form.Note.Created = KeepDate;
-                    _project.Notes[OperatedKey] = (form.Note);
+                    form.note.Created = KeepDate;
+                    _project.Notes[OperatedKey] = (form.note);
                     SaveProject();
                     ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
                     AddTitlesToListbox();
@@ -259,16 +254,12 @@ namespace NoteAppUI
             {
                string NoteValue = ListBox.SelectedItem.ToString();
                int OperatedKey = GetKeyByValue(NoteValue);
-               //form.TitleBox.Text = _project.Notes[OperatedKey].Title;
-               //form.CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
-               //form.TextBox.Text = _project.Notes[OperatedKey].Text;
-               //form.dateTimePicker1.Value = _project.Notes[OperatedKey].Created;
-               //form.dateTimePicker2.Value = _project.Notes[OperatedKey].Modified;
+               form.Note = _project.Notes[OperatedKey];
                 if (form.ShowDialog() == DialogResult.OK)
                 {
                     DateTime KeepDate = _project.Notes[OperatedKey].Created;
-                    form.Note.Created = KeepDate;
-                    _project.Notes[OperatedKey] = (form.Note);
+                    form.note.Created = KeepDate;
+                    _project.Notes[OperatedKey] = (form.note);
                     SaveProject();
                     ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
                     AddTitlesToListbox();

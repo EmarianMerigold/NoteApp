@@ -53,7 +53,7 @@
             // 
             this.CategoryComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Location = new System.Drawing.Point(69, 43);
+            this.CategoryComboBox.Location = new System.Drawing.Point(70, 43);
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(172, 21);
             this.CategoryComboBox.TabIndex = 1;

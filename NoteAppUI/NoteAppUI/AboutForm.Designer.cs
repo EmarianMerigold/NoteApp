@@ -41,7 +41,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Данная программа была разработанна в рамках \r\nобучающего курса студентом группы 5" +
     "86-2 Дьяченко К. Е.\r\n";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // button1
             // 
@@ -51,7 +51,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // Form1
             // 
