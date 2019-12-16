@@ -15,20 +15,20 @@ namespace NoteApp
         /// Задаём поля, которые будет содержать блокнот.
         /// </summary>
         public Category Category;
-        private string _title="Безымянный";
-        public string _text = "Текст";
-        public DateTime _created = DateTime.Now;
-        public DateTime _modified = DateTime.Now;
+        public string Text { get; set; } = "Текст";
+        private string _title;
+        public DateTime Created { get; set; } = DateTime.Now;
+        public DateTime Modified { get; set; } = DateTime.Now;
 
 
         /// <summary>
         /// Реализуем конструктор класса Note.
         /// </summary> 
         /// /// <param name="_title"> Поле Заголовок заметки</param>
-        /// <param name="_text"> Поле Текст заметки</param>
+        /// <param name="Text"> Поле Текст заметки</param>
         /// <param name="Category"> Поле Категория заметки</param>
-        /// <param name="_created"> Поле Дата создания заметки</param>
-        /// <param name="_modified"> Поле Дата изменения заметки</param>
+        /// <param name="Created"> Поле Дата создания заметки</param>
+        /// <param name="Modified"> Поле Дата изменения заметки</param>
         public Note(string title, string text, Category category, DateTime created, DateTime modified)
         {
             Title = title;
@@ -58,34 +58,5 @@ namespace NoteApp
                 _title = value;
             }
         }
-
-        /// <summary>
-        /// Возвращает и задаёт текст. Устанавливается ограничение на количество символов.
-        /// </summary>
-        public string Text
-        {
-            get
-            {
-                return _text;
-            }
-            set
-            {
-                if (value.Length > 1000)
-                {
-                    throw new ArgumentException("Ошибка. Можно не больше 1000 символов!");
-                }
-                _text = value;
-            }
-        }
-
-        /// <summary>
-        /// Метод, отвечающий за время создания заметки.
-        /// </summary>
-        public DateTime Created { get; set; }
-
-        /// <summary>
-        /// Метод, отвечающий за время изменения заметки.
-        /// </summary>
-        public DateTime Modified { get; set; }
     }
 }

@@ -36,7 +36,7 @@ namespace NoteApp
         public static Project LoadFromFile(string filename)
         {
             //Создаем переменную, в которую поместим результат десериализации
-            Project project = null;
+            Project project = new Project();
             //Создаём экземпляр сериализатора
             JsonSerializer serializer = new JsonSerializer();
             //Открываем поток для чтения из файла с указанием пути
