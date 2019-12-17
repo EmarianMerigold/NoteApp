@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEditForm));
             this.TitleBox = new System.Windows.Forms.TextBox();
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.TextBox = new System.Windows.Forms.TextBox();
@@ -126,6 +127,7 @@
             // 
             // OkButton
             // 
+            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OkButton.Location = new System.Drawing.Point(632, 415);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
@@ -136,6 +138,7 @@
             // 
             // CancelButton
             // 
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Location = new System.Drawing.Point(713, 415);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
@@ -160,6 +163,7 @@
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.CategoryComboBox);
             this.Controls.Add(this.TitleBox);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEditForm";
             this.Text = "Add/Edit Note";
             this.Load += new System.EventHandler(this.NewForm_Load);
