@@ -47,15 +47,16 @@ namespace NoteApp
             get
             {
                 return _title;
-
             }
             set
             {
-                if (value.Length > 50)
+                if (value.Length < 50)
                 {
-                    throw new ArgumentException("Ошибка. Можно не больше 50 символов!");
+                    _title = value;
+                    Modified = DateTime.Now;
                 }
-                _title = value;
+                else
+                    throw new ArgumentException("Ошибка. Можно не больше 50 символов!");
             }
         }
     }
