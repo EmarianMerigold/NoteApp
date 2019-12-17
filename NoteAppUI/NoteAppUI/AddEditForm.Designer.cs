@@ -163,8 +163,10 @@
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.CategoryComboBox);
             this.Controls.Add(this.TitleBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add/Edit Note";
             this.Load += new System.EventHandler(this.NewForm_Load);
             this.ResumeLayout(false);
