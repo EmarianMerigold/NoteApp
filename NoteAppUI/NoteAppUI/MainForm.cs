@@ -37,11 +37,17 @@ namespace NoteAppUI
         public void AddTitlesToListbox()
         {
             ListBox.Items.Clear();
-            foreach (KeyValuePair<int, Note> kvp in _project.Notes)
+            foreach (KeyValuePair<int, Note> kvp in _project.SortedDictionary((Category)CategoryComboBox.SelectedIndex))
             {
                 int n = 0;
-                if (CategoryComboBox.SelectedIndex == Convert.ToInt32(kvp.Value.Category))
+                    ListBox.Items.Insert(n, kvp.Value.Title);
+                    n++;
+            }
+            if (CategoryComboBox.SelectedIndex == 8)
+            {
+                foreach (KeyValuePair<int, Note> kvp in _project.SortedDictionary())
                 {
+                    int n = 0;
                     ListBox.Items.Insert(n, kvp.Value.Title);
                     n++;
                 }
@@ -81,12 +87,15 @@ namespace NoteAppUI
         private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddEditForm form = new AddEditForm(_project);
+            int OperatedKey = AvailableKey();
 
             if (form.ShowDialog() == DialogResult.OK)
             {
                 _project.Notes.Add(AvailableKey(), form.Note);
                 AddTitlesToListbox();
                 SaveProject();
+                CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
+                ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
             }
         }
 
@@ -231,14 +240,16 @@ namespace NoteAppUI
         /// </summary>
         private void CreateButton_Click(object sender, EventArgs e)
         {
-
             AddEditForm form = new AddEditForm(_project);
+            int OperatedKey = AvailableKey();
 
             if (form.ShowDialog() == DialogResult.OK)
             {
-                _project.Notes.Add(_project.Notes.Count, form.Note);
+                _project.Notes.Add(AvailableKey(), form.note);
                 AddTitlesToListbox();
                 SaveProject();
+                CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.Notes[OperatedKey].Category);
+                ListBox.SelectedItem = (_project.Notes[OperatedKey].Title);
             }
         }
 
@@ -288,6 +299,8 @@ namespace NoteAppUI
                 int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
                 _project.Notes.Remove(operatedKey);
                 AddTitlesToListbox();
+                NoteTextBox.Text = "";
+                Titlelabel.Text = "";
                 SaveProject();
             }
         }
