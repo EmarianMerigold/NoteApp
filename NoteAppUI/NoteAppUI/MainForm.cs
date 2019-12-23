@@ -21,7 +21,6 @@ namespace NoteAppUI
             LoadProject();
             AddTitlesToListbox();
             //Передача полю CategoryCombobox формы MainForm значений из перечисления Category.
-            //CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
             foreach (var item in Enum.GetValues(typeof(Category)))
             {
                 CategoryComboBox.Items.Add(item);
