@@ -48,7 +48,6 @@ namespace NoteAppUI
 
         }
 
-       public  Note note1;
         private void OkButton_Click(object sender, EventArgs e)
         {
             int Category = CategoryComboBox.SelectedIndex;
@@ -58,7 +57,17 @@ namespace NoteAppUI
 
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
-
+            if (TitleBox.TextLength > 50)
+            {
+                DialogResult result = MessageBox.Show(
+                "Длина заголовка не должна превышать 50 символов",
+                "Ошибка",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.DefaultDesktopOnly);
+                TitleBox.Text = "";
+            }
         }
 
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)

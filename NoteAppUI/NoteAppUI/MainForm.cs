@@ -21,7 +21,14 @@ namespace NoteAppUI
             LoadProject();
             AddTitlesToListbox();
             //Передача полю CategoryCombobox формы MainForm значений из перечисления Category.
-            CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
+            //CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
+            foreach (var item in Enum.GetValues(typeof(Category)))
+            {
+                CategoryComboBox.Items.Add(item);
+            }
+            CategoryComboBox.Items.Add("All");
+            CategoryComboBox.SelectedIndex = 8;
+            CurrentNoteLoad();
         }
 
         /// <summary>
@@ -130,7 +137,7 @@ namespace NoteAppUI
             int selectedID = ListBox.SelectedIndex;
             if (selectedID < 0)
             {
-                MessageBox.Show("Выберите пожайлуста заметку!", "Ошибка", MessageBoxButtons.OK);
+                MessageBox.Show("Выберите заметку!", "Ошибка", MessageBoxButtons.OK);
             }
             else
             {
@@ -152,13 +159,11 @@ namespace NoteAppUI
             {
                 int selected = GetKeyByValue(ListBox.SelectedItem.ToString());
                 Titlelabel.Text = ListBox.SelectedItem.ToString();
-                string CategoryText = "Note not selected";
-                CategoryText = _project.Notes[selected].Category.ToString();
-                CategoryLabel.Text = CategoryText;
-                CategoryLabel.Visible = true;
+                CategoryLabel.Text = _project.Notes[selected].Category.ToString();
                 NoteTextBox.Text = _project.Notes[selected].Text;
                 DateCreatedPicker.Value = _project.Notes[selected].Created;
-                dateTimePicker2.Value = _project.Notes[selected].Modified;
+                DateModifiedPicker.Value = _project.Notes[selected].Modified;
+                CurrentNoteSave(_project.Notes[selected]);
             }
             Titlelabel.Visible = true;
         }
@@ -319,6 +324,53 @@ namespace NoteAppUI
 
         private void DateModifiedPicker_ValueChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                if (ListBox.SelectedIndex != -1)
+                {
+                    DialogResult result = MessageBox.Show(
+                    "Удалить заметку?",
+                    "Сообщение",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.DefaultDesktopOnly);
+                    if (result == DialogResult.Yes)
+                        RemoveButton_Click(sender, e);
+                }
+            }
+            if (e.KeyCode == Keys.F4 && e.Alt)
+            {
+                SaveProject();
+                Close();
+            }
+        }
+
+        private void CurrentNoteLoad()
+        {
+            if (_project.CurrentNote != null)
+            {
+                Titlelabel.Text = _project.CurrentNote.Title;
+                CategoryLabel.Text = _project.CurrentNote.Category.ToString();
+                NoteTextBox.Text = _project.CurrentNote.Text;
+                DateCreatedPicker.Value = _project.CurrentNote.Created;
+                DateModifiedPicker.Value = _project.CurrentNote.Modified;
+                CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.CurrentNote.Category);
+            }
+        }
+
+        private void CurrentNoteSave(Note note)
+        {
+            int LastSelected = GetKeyByValue(note.Title);
+            if (LastSelected >= 0)
+            {
+                _project.CurrentNote = note;
+            }
 
         }
     }

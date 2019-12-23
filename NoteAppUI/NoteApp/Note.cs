@@ -16,7 +16,7 @@ namespace NoteApp
         /// </summary>
         public Category Category;
         public string Text { get; set; } = "Текст";
-        private string _title;
+        private string _title = "Безымянный";
         public DateTime Created { get; set; } = DateTime.Now;
         public DateTime Modified { get; set; } = DateTime.Now;
 
