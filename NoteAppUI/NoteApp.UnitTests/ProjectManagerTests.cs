@@ -27,11 +27,6 @@ namespace NoteApp.UnitTests
             Note note2 = new Note("МАУ", "мауууу", Category.People, new DateTime(2019, 12, 12).Date, new DateTime(2019, 12, 12).Date);
             Note note3 = new Note("qwerty", "qwerty", Category.Documents, new DateTime(2019, 12, 12).Date, new DateTime(2019, 12, 12).Date);
             string filename = $@"{path}\test1.json";
-            //for (int i=0; i<=3; i++)
-            //  { 
-
-            //  _testproject.dictionary.Add(i, note[0]);
-            //  }
             _testproject.Notes.Add(0, note0);
             _testproject.Notes.Add(1, note1);
             _testproject.Notes.Add(2, note2);
@@ -57,9 +52,7 @@ namespace NoteApp.UnitTests
             string testFilePath = $@"{path}\test.json";
             Project preactual = ProjectManager.LoadFromFile(testFilePath);
             Project actual = preactual;
-            int i = 0;
-            //for ????????????????????
-            foreach (KeyValuePair<int, Note> kvp in _testproject2.Notes)
+            for (int i = 0; i != _testproject2.Notes.Count; i++)
             {
                 Assert.AreEqual(expected.Notes[i].Title, actual.Notes[i].Title,
                 "Значения в десериализации различаются !");
