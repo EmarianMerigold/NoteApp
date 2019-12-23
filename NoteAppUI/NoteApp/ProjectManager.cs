@@ -28,11 +28,6 @@ namespace NoteApp
 
         }
 
-        /// <summary>
-        /// SaveToFile(project1,@"c/text.txt")
-        /// </summary>
-       
-
         public static Project LoadFromFile(string filename)
         {
             //Создаем переменную, в которую поместим результат десериализации
