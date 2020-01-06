@@ -84,7 +84,6 @@
             this.Label1.Size = new System.Drawing.Size(82, 13);
             this.Label1.TabIndex = 2;
             this.Label1.Text = "Show Category:";
-            this.Label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // CreateButton
             // 
@@ -127,7 +126,6 @@
             this.NoteTextBox.ReadOnly = true;
             this.NoteTextBox.Size = new System.Drawing.Size(522, 301);
             this.NoteTextBox.TabIndex = 6;
-            this.NoteTextBox.TextChanged += new System.EventHandler(this.NoteTextBox_TextChanged);
             // 
             // menuStrip1
             // 
@@ -148,7 +146,6 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
-            this.fileToolStripMenuItem.Click += new System.EventHandler(this.FileToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -195,7 +192,6 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
-            this.helpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -261,7 +257,6 @@
             this.DateCreatedPicker.Name = "DateCreatedPicker";
             this.DateCreatedPicker.Size = new System.Drawing.Size(139, 20);
             this.DateCreatedPicker.TabIndex = 13;
-            this.DateCreatedPicker.ValueChanged += new System.EventHandler(this.DateCreatedPicker_ValueChanged);
             // 
             // label3
             // 
@@ -273,13 +268,12 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Modified:";
             // 
-            // dateTimePicker2
+            // DateModifiedPicker
             // 
             this.DateModifiedPicker.Location = new System.Drawing.Point(542, 105);
-            this.DateModifiedPicker.Name = "dateTimePicker2";
+            this.DateModifiedPicker.Name = "DateModifiedPicker";
             this.DateModifiedPicker.Size = new System.Drawing.Size(139, 20);
             this.DateModifiedPicker.TabIndex = 15;
-            this.DateModifiedPicker.ValueChanged += new System.EventHandler(this.DateModifiedPicker_ValueChanged);
             // 
             // MainForm
             // 
@@ -309,7 +303,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NoteApp";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

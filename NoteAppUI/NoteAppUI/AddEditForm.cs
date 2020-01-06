@@ -38,16 +38,6 @@ namespace NoteAppUI
             CategoryComboBox.DataSource = Enum.GetValues(typeof(Category));
         }
 
-        private void NewForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void OkButton_Click(object sender, EventArgs e)
         {
             int Category = CategoryComboBox.SelectedIndex;
@@ -69,22 +59,6 @@ namespace NoteAppUI
                 TitleBox.Text = "";
             }
         }
-
-        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void DateModifiedPicker_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void DateCreatePicker_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void CancelButton_Click(object sender, EventArgs e)
         {
             this.Close();

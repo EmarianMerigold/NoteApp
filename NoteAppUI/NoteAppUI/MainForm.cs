@@ -18,6 +18,7 @@ namespace NoteAppUI
         public MainForm()
         {
             InitializeComponent();
+            this.KeyPreview = true;
             LoadProject();
             AddTitlesToListbox();
             //Передача полю CategoryCombobox формы MainForm значений из перечисления Category.
@@ -25,6 +26,7 @@ namespace NoteAppUI
             {
                 CategoryComboBox.Items.Add(item);
             }
+            this.KeyPreview = true;
             CategoryComboBox.Items.Add("All");
             CategoryComboBox.SelectedIndex = 8;
             CurrentNoteLoad();
@@ -39,8 +41,8 @@ namespace NoteAppUI
             foreach (KeyValuePair<int, Note> kvp in _project.SortedDictionary((Category)CategoryComboBox.SelectedIndex))
             {
                 int n = 0;
-                    ListBox.Items.Insert(n, kvp.Value.Title);
-                    n++;
+                ListBox.Items.Insert(n, kvp.Value.Title);
+                n++;
             }
             if (CategoryComboBox.SelectedIndex == 8)
             {
@@ -173,7 +175,6 @@ namespace NoteAppUI
                 DateModifiedPicker.Value = _project.Notes[selected].Modified;
                 CurrentNoteSave(_project.Notes[selected]);
             }
-            Titlelabel.Visible = true;
         }
 
         /// <summary>
@@ -229,9 +230,8 @@ namespace NoteAppUI
             {
                 if (kvp.Key == i)
                     i++;
-                else return i;
             }
-            return -1;
+            return i;
         }
 
         /// <summary>
@@ -302,41 +302,6 @@ namespace NoteAppUI
                 Titlelabel.Text = "";
                 SaveProject();
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void NoteTextBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        
-        private void FileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DateCreatedPicker_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DateModifiedPicker_ValueChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)

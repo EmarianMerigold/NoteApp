@@ -58,7 +58,6 @@
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(172, 21);
             this.CategoryComboBox.TabIndex = 1;
-            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
             // 
             // TextBox
             // 
@@ -67,7 +66,6 @@
             this.TextBox.Name = "TextBox";
             this.TextBox.Size = new System.Drawing.Size(776, 312);
             this.TextBox.TabIndex = 2;
-            this.TextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
             // 
             // LabelTitle
             // 
@@ -115,7 +113,6 @@
             this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
             this.CreatedDateTimePicker.Size = new System.Drawing.Size(137, 20);
             this.CreatedDateTimePicker.TabIndex = 7;
-            this.CreatedDateTimePicker.ValueChanged += new System.EventHandler(this.DateCreatePicker_ValueChanged);
             // 
             // ModifiedDateTimePicker
             // 
@@ -123,7 +120,6 @@
             this.ModifiedDateTimePicker.Name = "ModifiedDateTimePicker";
             this.ModifiedDateTimePicker.Size = new System.Drawing.Size(141, 20);
             this.ModifiedDateTimePicker.TabIndex = 8;
-            this.ModifiedDateTimePicker.ValueChanged += new System.EventHandler(this.DateModifiedPicker_ValueChanged);
             // 
             // OkButton
             // 
@@ -168,7 +164,6 @@
             this.Name = "AddEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add/Edit Note";
-            this.Load += new System.EventHandler(this.NewForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
