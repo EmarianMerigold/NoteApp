@@ -31,7 +31,7 @@ namespace NoteApp
         public static Project LoadFromFile(string filename)
         {
             //Создаем переменную, в которую поместим результат десериализации
-            Project project = new Project();
+            Project tempdictionary = new Project();
             //Создаём экземпляр сериализатора
             JsonSerializer serializer = new JsonSerializer();
             //Открываем поток для чтения из файла с указанием пути
@@ -39,9 +39,9 @@ namespace NoteApp
             using (JsonReader reader = new JsonTextReader(sr))
             {
                 //Вызываем десериализацию и явно преобразуем результат в целевой тип данных
-                project = serializer.Deserialize<Project>(reader);
+                tempdictionary = serializer.Deserialize<Project>(reader);
             }
-            return project;
+            return tempdictionary;
 
         }
 

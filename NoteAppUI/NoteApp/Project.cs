@@ -19,7 +19,7 @@ namespace NoteApp
         public Note CurrentNote;
 
         /// <summary>
-        /// percvaya realizacya
+        /// Первая реализация
         /// </summary>
         /// <returns></returns>
         public Dictionary<int, Note> SortedDictionary()
@@ -32,7 +32,7 @@ namespace NoteApp
         }
 
         /// <summary>
-        /// vtoraya relizacya
+        /// Вторая реализация
         /// </summary>
         public Dictionary<int, Note> SortedDictionary(Category category)
         {

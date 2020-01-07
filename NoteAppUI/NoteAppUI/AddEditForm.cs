@@ -19,12 +19,12 @@ namespace NoteAppUI
             {
                 return note;
             }
-    set
+            set
             {
                 note = value;
                 TitleBox.Text = note.Title;
                 TextBox.Text = note.Text;
-                CategoryComboBox.SelectedIndex = Convert.ToInt32(Note.Category);
+                CategoryComboBox.SelectedIndex = Convert.ToInt32(note.Category);
                 CreatedDateTimePicker.Value = Note.Created;
                 ModifiedDateTimePicker.Value = Note.Modified;
             }
@@ -56,7 +56,7 @@ namespace NoteAppUI
                 MessageBoxIcon.Information,
                 MessageBoxDefaultButton.Button1,
                 MessageBoxOptions.DefaultDesktopOnly);
-                TitleBox.Text = "";
+                TitleBox.Text = "Некорректно";
             }
         }
         private void CancelButton_Click(object sender, EventArgs e)
