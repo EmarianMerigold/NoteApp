@@ -26,7 +26,6 @@ namespace NoteAppUI
             {
                 CategoryComboBox.Items.Add(item);
             }
-            this.KeyPreview = true;
             CategoryComboBox.Items.Add("All");
             CategoryComboBox.SelectedIndex = 8;
             CurrentNoteLoad();
