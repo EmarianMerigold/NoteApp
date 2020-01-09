@@ -227,8 +227,8 @@ namespace NoteAppUI
             int i = 0;
             foreach (KeyValuePair<int, Note> kvp in _project.Notes)
             {
-                if (kvp.Key == i)
-                    i++;
+                if (_project.Notes.ContainsKey(i))
+                i++;
             }
             return i;
         }
