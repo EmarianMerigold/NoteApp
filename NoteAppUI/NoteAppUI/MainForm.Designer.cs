@@ -45,7 +45,6 @@
             this.removeNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Captionlabel = new System.Windows.Forms.Label();
             this.Titlelabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.CategoryLabel = new System.Windows.Forms.Label();
@@ -69,6 +68,8 @@
             // 
             // ListBox
             // 
+            this.ListBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.ListBox.FormattingEnabled = true;
             this.ListBox.Location = new System.Drawing.Point(34, 64);
             this.ListBox.Name = "ListBox";
@@ -88,6 +89,7 @@
             // 
             // CreateButton
             // 
+            this.CreateButton.FlatAppearance.BorderSize = 0;
             this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Image = ((System.Drawing.Image)(resources.GetObject("CreateButton.Image")));
             this.CreateButton.Location = new System.Drawing.Point(4, 64);
@@ -99,9 +101,10 @@
             // 
             // EditButton
             // 
+            this.EditButton.FlatAppearance.BorderSize = 0;
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Image = ((System.Drawing.Image)(resources.GetObject("EditButton.Image")));
-            this.EditButton.Location = new System.Drawing.Point(4, 155);
+            this.EditButton.Location = new System.Drawing.Point(4, 94);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(24, 24);
             this.EditButton.TabIndex = 4;
@@ -110,9 +113,10 @@
             // 
             // RemoveButton
             // 
+            this.RemoveButton.FlatAppearance.BorderSize = 0;
             this.RemoveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveButton.Image = ((System.Drawing.Image)(resources.GetObject("RemoveButton.Image")));
-            this.RemoveButton.Location = new System.Drawing.Point(4, 109);
+            this.RemoveButton.Location = new System.Drawing.Point(4, 124);
             this.RemoveButton.Name = "RemoveButton";
             this.RemoveButton.Size = new System.Drawing.Size(24, 24);
             this.RemoveButton.TabIndex = 5;
@@ -121,6 +125,9 @@
             // 
             // NoteTextBox
             // 
+            this.NoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NoteTextBox.Location = new System.Drawing.Point(266, 131);
             this.NoteTextBox.Multiline = true;
             this.NoteTextBox.Name = "NoteTextBox";
@@ -201,22 +208,12 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
-            // Captionlabel
-            // 
-            this.Captionlabel.AutoSize = true;
-            this.Captionlabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Captionlabel.Location = new System.Drawing.Point(294, 45);
-            this.Captionlabel.Name = "Captionlabel";
-            this.Captionlabel.Size = new System.Drawing.Size(30, 13);
-            this.Captionlabel.TabIndex = 8;
-            this.Captionlabel.Text = "Title:";
-            // 
             // Titlelabel
             // 
             this.Titlelabel.AutoSize = true;
             this.Titlelabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Titlelabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Titlelabel.Location = new System.Drawing.Point(345, 40);
+            this.Titlelabel.Location = new System.Drawing.Point(271, 40);
             this.Titlelabel.Name = "Titlelabel";
             this.Titlelabel.Size = new System.Drawing.Size(71, 20);
             this.Titlelabel.TabIndex = 9;
@@ -236,7 +233,7 @@
             // 
             this.CategoryLabel.AutoSize = true;
             this.CategoryLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CategoryLabel.Location = new System.Drawing.Point(346, 75);
+            this.CategoryLabel.Location = new System.Drawing.Point(327, 75);
             this.CategoryLabel.Name = "CategoryLabel";
             this.CategoryLabel.Size = new System.Drawing.Size(75, 13);
             this.CategoryLabel.TabIndex = 11;
@@ -246,7 +243,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Location = new System.Drawing.Point(277, 109);
+            this.label2.Location = new System.Drawing.Point(272, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 12;
@@ -254,7 +251,7 @@
             // 
             // DateCreatedPicker
             // 
-            this.DateCreatedPicker.Location = new System.Drawing.Point(330, 105);
+            this.DateCreatedPicker.Location = new System.Drawing.Point(325, 105);
             this.DateCreatedPicker.Name = "DateCreatedPicker";
             this.DateCreatedPicker.Size = new System.Drawing.Size(139, 20);
             this.DateCreatedPicker.TabIndex = 13;
@@ -288,7 +285,6 @@
             this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Titlelabel);
-            this.Controls.Add(this.Captionlabel);
             this.Controls.Add(this.NoteTextBox);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.EditButton);
@@ -303,7 +299,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NoteApp";
+            this.Text = "MyNote";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -330,7 +326,6 @@
         private System.Windows.Forms.ToolStripMenuItem editNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeNoteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.Label Captionlabel;
         private System.Windows.Forms.Label Titlelabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label CategoryLabel;

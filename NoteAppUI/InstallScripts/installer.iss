@@ -34,8 +34,7 @@ Source: "Release\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs creat
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
  
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon;IconFilename: "C:\Users\Admin\Desktop\notepad.ico"
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon;IconFilename: "C:\Users\User\source\repos\EmarianMerigold\NoteApp\NoteAppUI\InstallScripts\Release\NoteIcon.ico"
  
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent

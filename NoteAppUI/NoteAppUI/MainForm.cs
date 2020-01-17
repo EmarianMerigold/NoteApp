@@ -19,6 +19,7 @@ namespace NoteAppUI
         {
             InitializeComponent();
             this.KeyPreview = true;
+            //Загрузка файла, который содержит записи – заметки.
             LoadProject();
             AddTitlesToListbox();
             //Передача полю CategoryCombobox формы MainForm значений из перечисления Category.

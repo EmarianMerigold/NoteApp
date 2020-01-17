@@ -62,6 +62,9 @@
             // 
             // TextBox
             // 
+            this.TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TextBox.Location = new System.Drawing.Point(12, 96);
             this.TextBox.Multiline = true;
             this.TextBox.Name = "TextBox";
@@ -124,6 +127,7 @@
             // 
             // OkButton
             // 
+            this.OkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OkButton.Location = new System.Drawing.Point(632, 415);
             this.OkButton.Name = "OkButton";
@@ -135,6 +139,7 @@
             // 
             // CancelButton
             // 
+            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelButton.Location = new System.Drawing.Point(713, 415);
             this.CancelButton.Name = "CancelButton";
@@ -164,7 +169,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add/Edit Note";
+            this.Text = "Add/Edit";
             this.ResumeLayout(false);
             this.PerformLayout();
 
