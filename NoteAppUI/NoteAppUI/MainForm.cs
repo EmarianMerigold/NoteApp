@@ -29,7 +29,6 @@ namespace NoteAppUI
                 CategoryComboBox.Items.Add(item);
             }
             CategoryComboBox.Items.Add("All");
-            //CategoryComboBox.SelectedIndex = 8;
             CurrentNoteLoad();
             int LastCategory = _project.LastCategory;
             CategoryComboBox.SelectedIndex = LastCategory;
@@ -299,12 +298,22 @@ namespace NoteAppUI
             }
             else
             {
-                int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
-                _project.Notes.Remove(operatedKey);
-                AddTitlesToListbox();
-                NoteTextBox.Text = "";
-                Titlelabel.Text = "";
-                SaveProject();
+                DialogResult result = MessageBox.Show(
+                   "Удалить заметку?",
+                   "Сообщение",
+                   MessageBoxButtons.YesNo,
+                   MessageBoxIcon.Information,
+                   MessageBoxDefaultButton.Button1,
+                   MessageBoxOptions.DefaultDesktopOnly);
+                if (result == DialogResult.Yes)
+                {
+                    int operatedKey = GetKeyByValue(ListBox.SelectedItem.ToString());
+                    _project.Notes.Remove(operatedKey);
+                    AddTitlesToListbox();
+                    NoteTextBox.Text = "";
+                    Titlelabel.Text = "";
+                    SaveProject();
+                }
             }
         }
 
@@ -314,14 +323,6 @@ namespace NoteAppUI
             {
                 if (ListBox.SelectedIndex != -1)
                 {
-                    DialogResult result = MessageBox.Show(
-                    "Удалить заметку?",
-                    "Сообщение",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Information,
-                    MessageBoxDefaultButton.Button1,
-                    MessageBoxOptions.DefaultDesktopOnly);
-                    if (result == DialogResult.Yes)
                         RemoveButton_Click(sender, e);
                 }
             }
@@ -341,7 +342,6 @@ namespace NoteAppUI
                 NoteTextBox.Text = _project.CurrentNote.Text;
                 DateCreatedPicker.Value = _project.CurrentNote.Created;
                 DateModifiedPicker.Value = _project.CurrentNote.Modified;
-               // CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.CurrentNote.Category);
             }
         }
 
