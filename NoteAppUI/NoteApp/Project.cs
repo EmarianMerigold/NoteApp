@@ -17,6 +17,7 @@ namespace NoteApp
 
         public Dictionary<int, Note> Notes = new Dictionary<int, Note>();
         public Note CurrentNote;
+        public int LastCategory;
 
         /// <summary>
         /// Первая реализация

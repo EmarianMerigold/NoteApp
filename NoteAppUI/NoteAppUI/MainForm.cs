@@ -19,6 +19,7 @@ namespace NoteAppUI
         {
             InitializeComponent();
             this.KeyPreview = true;
+            Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
             //Загрузка файла, который содержит записи – заметки.
             LoadProject();
             AddTitlesToListbox();
@@ -28,8 +29,10 @@ namespace NoteAppUI
                 CategoryComboBox.Items.Add(item);
             }
             CategoryComboBox.Items.Add("All");
-            CategoryComboBox.SelectedIndex = 8;
+            //CategoryComboBox.SelectedIndex = 8;
             CurrentNoteLoad();
+            int LastCategory = _project.LastCategory;
+            CategoryComboBox.SelectedIndex = LastCategory;
         }
 
         /// <summary>
@@ -201,6 +204,7 @@ namespace NoteAppUI
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             AddTitlesToListbox();
+           _project.LastCategory = CategoryComboBox.SelectedIndex;
         }
 
         /// <summary>
@@ -337,7 +341,7 @@ namespace NoteAppUI
                 NoteTextBox.Text = _project.CurrentNote.Text;
                 DateCreatedPicker.Value = _project.CurrentNote.Created;
                 DateModifiedPicker.Value = _project.CurrentNote.Modified;
-                CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.CurrentNote.Category);
+               // CategoryComboBox.SelectedIndex = Convert.ToInt32(_project.CurrentNote.Category);
             }
         }
 
@@ -349,6 +353,11 @@ namespace NoteAppUI
                 _project.CurrentNote = note;
             }
 
+        }
+
+        private void OnApplicationExit(object sender, EventArgs e)
+        {
+            SaveProject();
         }
     }
 }
